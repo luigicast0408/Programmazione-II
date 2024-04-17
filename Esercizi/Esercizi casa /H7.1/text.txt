@@ -1,0 +1,11 @@
+ Definire una classe Rettangolo con i seguenti requisiti funzionali:
+• Attributi base e altezza privati, ma accessibili tramite getter/setter.
+• Il costruttore prende la base e l’altezza come parametri, in alternativa
+imposta due valori di default.
+• Implementare delle funzioni membro pubbliche per il calcolo di area,
+perimetro e diagonale
+• Implementare una funzione membro che verifica se si tratta di un quadrato
+Definire un metodo main() dove vengono istanziati alcuni oggetti Rettangolo
+per testare le funzionalità della classe.
+Hint: utilizzare in maniera opportuna i diversi modi per definire un costruttore
+ed il qualificatore const.

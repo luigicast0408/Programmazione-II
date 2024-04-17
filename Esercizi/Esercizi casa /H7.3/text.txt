@@ -1,0 +1,5 @@
+Implementare una classe Person e una classe Pet, ciascuna persona
+possiede zero o più animali. Definire in maniera arbitrariamente estesa
+le due classi, in particolare ridefinire il metodo operator<< di
+entrambe facendo in modo che la classe Person sfrutti il metodo
+operator<< della classe Pet dei suoi animali.
