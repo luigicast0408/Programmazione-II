@@ -1,0 +1,11 @@
+Implementare una classe Counter. I costruttori devono permettere di definire un
+contatore che:
+• inizia da un valore dato come parametro, oppure da zero
+• effettua incrementi/decrementi di una quantità data, oppure di 1
+il costruttore di default crea un contatore che inizia da 0 e incrementa/decrementa
+di 1 ogni volta.
+Definire inoltre (almeno) i seguenti membri della classe Counter:
+• public void Increase() //incrementa il contatore
+• public void Decrease() //decrementa il contatore
+• public void Increase(int increaseBy) // accetta solo valori non negativi
+• public void Decrease(int decreaseBy) // accetta solo valori non negativi
