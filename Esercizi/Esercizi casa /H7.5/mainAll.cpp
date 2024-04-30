@@ -71,7 +71,7 @@ void Rectangle::setWidth(double width) {this->width=width;}
 bool Rectangle::isASquare() {return width==height ? true: false;}
 
 double Rectangle::getArea() {
-    return (height*width)/2;
+    return (height*width);
 }
 
 void Rectangle::print() {
