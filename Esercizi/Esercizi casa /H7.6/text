@@ -1,0 +1,12 @@
+mplementare un algoritmo di ordinamento tramite un metodo
+void ordina(T a[], int n)
+che prende in input un array di elementi di tipo T di lunghezza n e li ordina.
+Definire inoltre una semplice classe Rettangolo.
+Nel corpo del metodo main() istanziare:
+- un array di interi
+- un array di char
+- un array di rettangoli
+applicare l'algoritmo di ordinamento a tutti e tre gli array facendo in modo che gli
+oggetti di tipo Rettangolo vengano confrontati in base al valore della loro area.
+Per verificare il funzionamento del codice, stampare il contenuto degli array prima
+e dopo l’ordinamento.
