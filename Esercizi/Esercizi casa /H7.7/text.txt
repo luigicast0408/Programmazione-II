@@ -1,0 +1,13 @@
+Implementare un metodo
+int ricerca(T dato, T v[], int dim)
+che prende in input un oggetto di tipo T, un array di elementi tipo T di lunghezza dim e
+cerca il primo elemento all’interno dell’array, restituendo l’indice se presente. Se
+l’elemento non è presente il metodo restituisce il valore -1. Definire inoltre una
+semplice classe Punto.
+Nel corpo del metodo main() istanziare:
+- un array di interi
+- un array di char
+- un array di Punto
+Permettere all’utente di inserire dei valori per ciascuno dei tre tipi elencati sopra ed
+applicare l’algoritmo di ricerca degli elementi inseriti dall’utente.
+Per verificare il funzionamento del codice, stampare il contenuto degli array.
