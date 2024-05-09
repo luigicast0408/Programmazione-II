@@ -2,56 +2,31 @@
 using namespace std;
 
 template <typename T>
-class Data {
-private:
-    T value;
-public:
-    Data(T value);
-    T getValue();
-    void setValue(T value);
-};
-
-template <typename T>
-Data<T>::Data(T value) {
-    this->value=value;
-}
-
-template <typename T>
-T Data<T>::getValue() {
-    return value;
-}
-
-template <typename T>
-void  Data<T>::setValue(T value) {
-    this->value=value;
-}
-
-template <typename T>
 class Node {
 public:
-    Data<T> data;
-    Node<T> *next;
-    Node(Data<T> data, Node<T>*next);
+    T data;
+    Node<T>* next;
+    Node(T data, Node<T>* next);
 };
 
 template <typename T>
-Node<T>::Node(Data<T> data, Node<T>* next) : data(data), next(next) {}
+Node<T>::Node(T data, Node<T>* next) : data(data), next(next) {}
 
 template <typename T>
 class List {
 public:
-    Node<T> *head;
-    List(Node<T> *head);
-    void insertNode(Data<T> data);
-    void deleteNode(Data<T> data);
+    Node<T>* head;
+    List(Node<T>* head);
+    void insertNode(T data);
+    void deleteNode(T data);
     bool isEmpty();
-    bool searchNode(Data<T> data);
+    bool searchNode(T data);
     void printList();
 };
 
 template<typename T>
-List<T>::List(Node<T> *head) {
-    this->head=head;
+List<T>::List(Node<T>* head) {
+    this->head = head;
 }
 
 template<typename T>
@@ -59,12 +34,11 @@ bool List<T>::isEmpty() {
     return head == nullptr;
 }
 
-
 template<typename T>
-bool List<T>::searchNode(Data<T> data) {
+bool List<T>::searchNode(T data) {
     Node<T>* current = head;
     while (current != nullptr) {
-        if (current->data.getValue() == data.getValue()) {
+        if (current->data == data) {
             return true;
         }
         current = current->next;
@@ -72,66 +46,61 @@ bool List<T>::searchNode(Data<T> data) {
     return false;
 }
 
-
 template<typename T>
 void List<T>::printList() {
     cout << "_______LIST_______" << endl;
     Node<T>* currentNode = head;
     while (currentNode != nullptr) {
-        cout << "List-> " << currentNode->data.getValue() << endl;
-        currentNode = currentNode->next; // Avanzamento al nodo successivo
+        cout << "List-> " << currentNode->data << endl;
+        currentNode = currentNode->next;
     }
     cout << "_______LIST_______" << endl;
 }
 
-
 template<typename T>
-void List<T>::insertNode(Data<T> data) {
+void List<T>::insertNode(T data) {
     Node<T>* newNode = new Node<T>(data, nullptr);
     if (isEmpty()) {
         head = newNode;
     } else {
         Node<T>* current = head;
         Node<T>* prev = nullptr;
-        while (current != nullptr && current->data.getValue() < data.getValue()) {
+        while (current != nullptr && current->data < data) {
             prev = current;
             current = current->next;
         }
         if (prev != nullptr)
             prev->next = newNode;
         else
-            head = newNode; // Inserimento in testa
-        newNode->next = current; // Aggiornamento del collegamento next
+            head = newNode;
+        newNode->next = current;
     }
 }
 
-
 template<typename T>
-void List<T>::deleteNode(Data<T> data) {
+void List<T>::deleteNode(T data) {
     Node<T>* current = head;
     Node<T>* prev = nullptr;
-    while (current != nullptr && current->data.getValue() != data.getValue()) {
+    while (current != nullptr && current->data != data) {
         prev = current;
         current = current->next;
     }
-    if (current != nullptr) { // Elemento esiste nella lista
-        if (prev != nullptr) // Non è la testa della lista
+    if (current != nullptr) {
+        if (prev != nullptr)
             prev->next = current->next;
         else
-            head = current->next; // Aggiornamento del puntatore al primo elemento
+            head = current->next;
         delete current;
     }
 }
-
 
 int main() {
     Node<int>* head = nullptr;
     List<int> list = List<int>(head);
 
-    Data<int> data = Data<int>(2);
+    int data = 2;
     list.insertNode(data);
 
-    // Controllo se il nodo è stato inserito correttamente
     if (list.searchNode(data)) {
         cout << "Node inserted successfully." << endl;
     } else {
@@ -140,10 +109,8 @@ int main() {
 
     list.printList();
 
-    // Elimina il nodo
     list.deleteNode(data);
 
-    // Controlla se il nodo è stato eliminato correttamente
     if (!list.searchNode(data)) {
         cout << "Node deleted successfully." << endl;
     } else {
