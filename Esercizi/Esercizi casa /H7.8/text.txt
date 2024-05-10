@@ -1,0 +1,10 @@
+mplementare:
+• Una lista concatenata di interi
+• Una lista concatenata di tipi generici
+• Una lista concatenata ordinata
+• Una lista doppia
+• Una lista doppia ordinata
+• Una lista doppia circolare (con e senza sentinella)
+Per ciascuna struttura dati implementare le
+operazioni di inserimento, rimozione, ricerca e
+l’operatore di flusso operator<<.

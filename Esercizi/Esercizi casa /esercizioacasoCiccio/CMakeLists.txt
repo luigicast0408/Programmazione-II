@@ -18,4 +18,5 @@ add_executable(untitled main.cpp Scuola.cpp Studente.cpp
         ../H7.2/HeaderFile/Move.h
         Studente.cpp
         Studente.cpp
-        Studente.cpp)
+        Studente.cpp
+        ../ImplemazioneStruttureDatiOOP/STACK/mainAll.cpp)
