@@ -1,4 +1,5 @@
-mplementare:
+Esercizio
+Implementare:
 • Una lista concatenata di interi
 • Una lista concatenata di tipi generici
 • Una lista concatenata ordinata
