@@ -35,6 +35,7 @@ public:
     void addNodeHead(int value);
     void  addNodeTail(int value);
     bool searchValue(int valueSearch) const;
+    int deleteNode(int valueDelete);
     bool isEmpty(Node *node);
     friend void  operator <<(ostream& out, const List& list);
 };
@@ -95,6 +96,34 @@ bool List::searchValue(int valueSearch) const {
     return false;
 }
 
+int List::deleteNode(int valueDelete) {
+    Node *current = head;
+    Node *prev = nullptr;
+
+    if (isEmpty(head)) {
+        return -1; // List is empty
+    } else {
+        while (current != nullptr && current->getValue() != valueDelete) {
+            prev = current;
+            current = current->getNext();
+        }
+
+        if (current != nullptr) {
+            if (prev != nullptr) {
+                prev->setNext(current->getNext());
+                delete current;
+            } else {
+                head = current->getNext();
+                delete current;
+            }
+            return 0;
+        } else {
+            return -1;
+        }
+    }
+}
+
+
 void  operator <<(ostream& out, const List& list){
     Node *current=list.head;
     while (current!=nullptr){
@@ -102,6 +131,7 @@ void  operator <<(ostream& out, const List& list){
         current=current->getNext();
     }
 }
+
 
 int main() {
     List myList=List(nullptr);
@@ -121,5 +151,11 @@ int main() {
     myList.searchValue(3);
 
     myList.searchValue(7);
-    return 0;
+
+    if (int result=myList.deleteNode(3) ==0){
+        cout<<"The node is delete"<<endl;
+    } else{
+        cout<<"The node isn't delete"<<endl;
+    }
+    cout<<myList;
 }
