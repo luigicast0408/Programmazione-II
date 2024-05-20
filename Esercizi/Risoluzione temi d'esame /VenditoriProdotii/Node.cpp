@@ -1,13 +1,7 @@
 #include "Node.h"
+#include "Product.h"
 
-template<typename T>
-Node<T>::Node(T* data) : data(data), next(nullptr) {}
-
-template<typename T>
-T* Node<T>::getData() const { return data; }
-
-template<typename T>
-Node<T>* Node<T>::getNext() const { return next; }
-
-template<typename T>
-void Node<T>::setNext(Node<T>* next) { this->next = next; }
+Node::Node(Product data): data(data) {}
+void Node::setNext(Node *next) {this->next=next;}
+Node *Node::getNext() const {return next;}
+Product Node::getData() const {return data;}

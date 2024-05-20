@@ -1,9 +1,7 @@
 #include "Seller.h"
 #include "ProductChildren.h"
 #include "FoodProduct.h"
-#include "Product.h"
-#include "Node.h"
-#include "Queue.h"
+#include "ManageFile.h"
 #include <iostream>
 using namespace std;
 
@@ -15,10 +13,13 @@ int main() {
     Date productionDate(2025, 1, 1);
     FoodProduct foodProduct(2, "Apple", "apple", 1.5, expiryDate, productionDate);
 
-    seller.addProductToQueue(&productChildren);
-    seller.addProductToQueue(&foodProduct);
 
+    seller.addProductToQueue(productChildren);
+    seller.addProductToQueue(foodProduct);
     seller.printProducts();
+    seller.printSeller();
+    MenageFile menageFile;
+    menageFile.readInformationProduct();
 
     return 0;
 }

@@ -4,7 +4,6 @@
 #include "ProductChildren.h"
 #include "FoodProduct.h"
 #include "Product.h"
-#include "Node.h"
 #include "Queue.h"
 #include <string>
 #include <iostream>
@@ -15,12 +14,12 @@ private:
     int idSeller;
     string name;
     string surname;
-    Queue<Product>* productQueue;
+    Queue productQueue;
 public:
     Seller(int idSeller, string name, string surname);
-    void addProductToQueue(Product* product);
+    void addProductToQueue(Product product);
     void printProducts();
+    void printSeller();
     ~Seller();
 };
-
 #endif // SELLER_H

@@ -1,18 +1,18 @@
 #ifndef NODE_H
 #define NODE_H
 #include <iostream>
+#include "Product.h"
 using namespace std;
 
-template<typename T>
 class Node {
 private:
-    T* data;
-    Node<T>* next;
+    Product data;
+    Node* next;
 public:
-    Node(T* data);
-    T* getData() const;
-    Node<T>* getNext() const;
-    void setNext(Node<T>* next);
+    Node(Product data);
+    Product getData() const;
+    Node* getNext() const;
+    void setNext(Node* next);
 };
 
 #endif // NODE_H

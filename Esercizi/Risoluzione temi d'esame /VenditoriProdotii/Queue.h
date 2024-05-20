@@ -1,18 +1,16 @@
 #ifndef QUEUE_H
 #define QUEUE_H
-
 #include "Node.h"
 
-template<typename T>
 class Queue {
 private:
-    Node<T>* head;
-    Node<T>* tail;
+    Node* head;
+    Node* tail;
 public:
     Queue();
-    void enqueue(T* data);
+    Queue(Node *head, Node *tail);
+    void enqueue(Product data);
     void dequeue();
     void printInformation();
 };
-
 #endif // QUEUE_H

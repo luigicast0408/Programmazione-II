@@ -7,8 +7,8 @@ using namespace std;
 class Product {
 protected:
     int idProduct;
-    std::string nameProduct;
-    std::string descriptionProduct;
+    string nameProduct;
+    string descriptionProduct;
     double priceProduct;
 public:
     Product();

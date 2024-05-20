@@ -1,24 +1,11 @@
 #include "Queue.h"
 #include <iostream>
 
-template<typename T>
-Node<T>::Node(T* data) : data(data), next(nullptr) {}
+Queue::Queue(): head(nullptr), tail(nullptr) {}
+Queue::Queue(Node *head, Node *tail) : head(head), tail(tail)  {}
 
-template<typename T>
-T* Node<T>::getData() const { return data; }
-
-template<typename T>
-Node<T>* Node<T>::getNext() const { return next; }
-
-template<typename T>
-void Node<T>::setNext(Node<T>* next) { this->next = next; }
-
-template<typename T>
-Queue<T>::Queue() : head(nullptr), tail(nullptr) {}
-
-template<typename T>
-void Queue<T>::enqueue(T* data) {
-    Node<T>* newNode = new Node<T>(data);
+void Queue::enqueue(Product data) {
+    Node * newNode = new Node(data);
     if (!head) {
         head = tail = newNode;
     } else {
@@ -27,22 +14,20 @@ void Queue<T>::enqueue(T* data) {
     }
 }
 
-template<typename T>
-void Queue<T>::dequeue() {
+void Queue::dequeue() {
     if (!head) {
-        std::cout << "Queue is empty!" << std::endl;
+        cout << "Queue is empty!" << std::endl;
         return;
     }
-    Node<T>* temp = head;
+    Node* temp = head;
     head = head->getNext();
     delete temp;
 }
 
-template<typename T>
-void Queue<T>::printInformation() {
-    Node<T>* current = head;
+void Queue::printInformation() {
+    Node* current = head;
     while (current) {
-        current->getData()->printInformation();
+        current->getData().printInformation();
         current = current->getNext();
     }
 }
