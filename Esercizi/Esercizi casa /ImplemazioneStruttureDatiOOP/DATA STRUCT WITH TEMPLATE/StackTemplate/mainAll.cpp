@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+//ADD  HEAD AND DELETE HEAD (LIFO)
 
 template <typename T>
 class Data {

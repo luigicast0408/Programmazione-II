@@ -99,7 +99,9 @@ int main() {
     List<int> list = List<int>(head);
 
     int data = 2;
-    list.insertNode(data);
+    list.insertNode(2);
+    list.insertNode(4);
+    list.insertNode(9);
 
     if (list.searchNode(data)) {
         cout << "Node inserted successfully." << endl;
