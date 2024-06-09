@@ -1,0 +1,6 @@
+Fido Labrador 3 Cane
+Luna Siamese  2 Gatto
+Rex  PastoreTedesco 5 Cane
+PIPPO Persiano 4 Gatto
+Milo  Beagle 1  Cane
+Nala  MaineCoon 3 Gatto
