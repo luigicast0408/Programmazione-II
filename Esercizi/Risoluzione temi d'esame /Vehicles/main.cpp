@@ -15,6 +15,8 @@ public:
     Vehicles(string idVehicles, string name, string model, int yearOfManufacture, string brand)
             : idVehicles(idVehicles), name(name), model(model), yearOfManufacture(yearOfManufacture), brand(brand) {}
 
+    virtual ~Vehicles() {}
+
     string getIdVehicles() const {
         return idVehicles;
     }
@@ -75,7 +77,7 @@ public:
     }
 
     friend ostream& operator<<(ostream& os, const Car& c) {
-        os << c.printInformation()<<endl;
+        os << c.printInformation() << endl;
         return os;
     }
 };
@@ -138,7 +140,7 @@ private:
     Node<T>* min(Node<T>* node) const;
     Node<T>* searchNode(const string& idVehicles, Node<T>* nodeToSearch);
     void printLevels(Node<T>* node, int level) const;
-    bool isEmpty() const {return root == nullptr;}
+    bool isEmpty() const { return root == nullptr; }
     int calculationHeight(Node<T>* node) const;
 
 public:
@@ -148,7 +150,7 @@ public:
     void inOrder() const;
     void preOrder() const;
     void postOrder() const;
-    void deleteNode(string idVehicles);
+    void deleteNode(const string& idVehicles);
     Node<T>* searchNode(const string& idVehicles);
 
     template <typename U>
@@ -299,6 +301,7 @@ void BST<T>::deleteNode(Node<T>* nodeToDelete) {
         node->setNodeLeft(nodeToDelete->getNodeLeft());
         node->getNodeLeft()->setNodeParent(node);
     }
+    delete nodeToDelete->getValue();
     delete nodeToDelete;
 }
 
@@ -308,7 +311,7 @@ Node<T>* BST<T>::searchNode(const string& idVehicle) {
 }
 
 template <typename T>
-Node<T>* BST<T>::searchNode(const string &idVehicle, Node<T>* nodeToSearch) {
+Node<T>* BST<T>::searchNode(const string& idVehicle, Node<T>* nodeToSearch) {
     Node<T>* current = nodeToSearch;
     while (current != nullptr && current->getValue()->getIdVehicles() != idVehicle) {
         if (idVehicle < current->getValue()->getIdVehicles()) {
@@ -320,41 +323,32 @@ Node<T>* BST<T>::searchNode(const string &idVehicle, Node<T>* nodeToSearch) {
     return current;
 }
 
-
 template <typename T>
-void BST<T>::deleteNode(string idVehicles) {
-    Node<T>* current = root;
-    while (current != nullptr && idVehicles != *(current->getValue())) {
-        if (idVehicles > *(current->getValue())) {
-            current = current->getNodeRight();
-        } else {
-            current = current->getNodeLeft();
-        }
-    }
-
-    if (current == nullptr) {
-        cout << "The node isn't in the BST" << endl;
-    } else {
-        deleteNode(current);
+void BST<T>::deleteNode(const string& idVehicles) {
+    Node<T>* nodeToDelete = searchNode(idVehicles);
+    if (nodeToDelete != nullptr) {
+        deleteNode(nodeToDelete);
         cout << "The node was in the BST and has been deleted" << endl;
         numberOfElements--;
+    } else {
+        cout << "The node isn't in the BST" << endl;
     }
 }
 
-bool operator<(Vehicles& v1, Vehicles& v2) {
+bool operator<(const Vehicles& v1, const Vehicles& v2) {
     return v1.getIdVehicles() < v2.getIdVehicles();
 }
 
-bool operator>(Vehicles& v1, Vehicles& v2) {
+bool operator>(const Vehicles& v1, const Vehicles& v2) {
     return v1.getIdVehicles() > v2.getIdVehicles();
 }
 
-bool operator==(Vehicles& v1, Vehicles& v2) {
-    return v1.getIdVehicles() == v2.getIdVehicles() && v1.getName() == v2.getName() && v1.getModel() == v2.getModel() && v1.getYearOfManufacture() == v2.getYearOfManufacture();
+bool operator==(const Vehicles& v1, const Vehicles& v2) {
+    return v1.getIdVehicles() == v2.getIdVehicles();
 }
 
-bool operator!=(Vehicles& v1, Vehicles& v2) {
-    return v1.getIdVehicles() != v2.getIdVehicles() || v1.getName() != v2.getName() || v1.getModel() != v2.getModel() || v1.getYearOfManufacture() != v2.getYearOfManufacture();
+bool operator!=(const Vehicles& v1, const Vehicles& v2) {
+    return v1.getIdVehicles() != v2.getIdVehicles();
 }
 
 int main() {
@@ -364,15 +358,13 @@ int main() {
 
     bst.insertNode(car1);
     bst.insertNode(car2);
-    if (bst.searchNode("9") != nullptr){
-       //cout<<"Found"<<endl;
-    } else{
-        cout<<" not Found"<<endl;
-
+    if (bst.searchNode("3") != nullptr){
+        bst.deleteNode("3");
+        cout << "Found and Deleted" << endl;
+    } else {
+        cout << "Not Found" << endl;
     }
     bst.postOrder();
-    delete car1;
-    delete car2;
-
+    // No need to delete car1 and car2 here since BST is managing their deletion
     return 0;
 }
